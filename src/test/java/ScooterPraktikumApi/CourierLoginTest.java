@@ -5,6 +5,7 @@ import ApiScooter.StepsLoginCourier;
 import io.qameta.allure.Description;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -19,6 +20,7 @@ public class CourierLoginTest {
     private final String password = "qwer123412";
     private final String firstName = "Алексей";
     private final String incorrectedLogin = "Alex523451222";
+    private String id;
 
     @BeforeEach
     public void setUp() {
@@ -65,5 +67,10 @@ public class CourierLoginTest {
         String id = stepsCreateCourier.getCourierId(login, password);
 
         stepsCreateCourier.deleteCourierRequest(id);
+    }
+
+    @AfterEach
+    public void deleteCourier() {
+            stepsCreateCourier.deleteCourierRequest(id);
     }
 }
