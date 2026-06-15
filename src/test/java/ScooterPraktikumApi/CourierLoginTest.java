@@ -16,7 +16,7 @@ public class CourierLoginTest {
     private StepsCreateCourier stepsCreateCourier = new StepsCreateCourier();
     private StepsLoginCourier stepsLoginCourier = new StepsLoginCourier();
 
-    private final String login = "Alex52345";
+    private final String login = "Alex523457";
     private final String password = "qwer123412";
     private final String firstName = "Алексей";
     private final String incorrectedLogin = "Alex523451222";
@@ -36,9 +36,7 @@ public class CourierLoginTest {
 
         Response response = stepsLoginCourier.autorizationCourierRequest(login, password);
 
-        String id = stepsLoginCourier.autorizationCourierSuccess(response);
-
-        stepsCreateCourier.deleteCourierRequest(id);
+        id = stepsLoginCourier.autorizationCourierSuccess(response);
     }
 
     @Test
@@ -50,9 +48,7 @@ public class CourierLoginTest {
         Response response = stepsLoginCourier.autorizationCourierRequest(incorrectedLogin, password);
         stepsLoginCourier.getResponseErrorCodeAutorization(response);
 
-        String id = stepsCreateCourier.getCourierId(login, password);
-
-        stepsCreateCourier.deleteCourierRequest(id);
+        id = stepsCreateCourier.getCourierId(login, password);
     }
 
     @Test
@@ -64,9 +60,7 @@ public class CourierLoginTest {
         Response response = stepsLoginCourier.autorizationCourierRequiredFieldMissing(password);
         stepsLoginCourier.getResponseErrorCodeRequiredFieldMissing(response);
 
-        String id = stepsCreateCourier.getCourierId(login, password);
-
-        stepsCreateCourier.deleteCourierRequest(id);
+        id = stepsCreateCourier.getCourierId(login, password);
     }
 
     @AfterEach
